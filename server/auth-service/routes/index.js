@@ -7,5 +7,5 @@ function initializeRoute(route, routeName) {
     const newRouter = require(`./${route}`);
     router.use(`/${routeName}`, newRouter);
 }
-
+initializeRoute('user', 'user')
 module.exports = router;

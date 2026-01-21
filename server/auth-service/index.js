@@ -8,9 +8,10 @@ const models = require("./models/entities/index");
 const apiName = process.env.API_NAME;
 const port = process.env.PORT;
 const app = express();
-
+app.use(express.json())
 app.use(`/${apiName}`, route);
-
+const errorHandlingMiddleware = require('./middlewares/ErrorHandlingMiddleware');
+app.use(errorHandlingMiddleware)
 const start = async () => {
   try {
     await sequelize.authenticate();
